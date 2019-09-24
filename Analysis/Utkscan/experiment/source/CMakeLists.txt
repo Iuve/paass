@@ -3,6 +3,7 @@ set(EXPERIMENT_SOURCES
         E11027Processor.cpp
         TemplateExpProcessor.cpp
         VandleOrnl2012Processor.cpp
+	LearningProcessor.cpp
         )
 
 if (PAASS_USE_ROOT)

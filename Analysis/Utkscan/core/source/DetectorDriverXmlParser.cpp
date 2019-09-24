@@ -52,6 +52,7 @@
 #include "E11027Processor.hpp"
 #include "TemplateExpProcessor.hpp"
 #include "VandleOrnl2012Processor.hpp"
+#include "LearningProcessor.hpp"
 
 #ifdef useroot //Some processors REQUIRE ROOT to function
 #include "Anl1471Processor.hpp"
@@ -226,6 +227,8 @@ vector<EventProcessor *> DetectorDriverXmlParser::ParseProcessors(const pugi::xm
                     processor.attribute("res").as_double(2.0), processor.attribute("offset").as_double(1000.0),
                     processor.attribute("NumStarts").as_uint(1), processor.attribute("compression").as_double(1.0),
                     processor.attribute("qdcmin").as_double(0.0),processor.attribute("tofcut").as_double(-1000.0),processor.attribute("idealfp").as_double(100)));
+        }else if (name == "LearningProcessor") {
+	  vecProcess.push_back(new LearningProcessor(processor.attribute("threshold").as_double(2.0)));
         } 
 #ifdef useroot //Certain processors REQUIRE ROOT to actually work
         else if (name == "Anl1471Processor") {
